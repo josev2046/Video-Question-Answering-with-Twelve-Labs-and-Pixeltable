@@ -1,0 +1,133 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+skinparam nodesep 40
+skinparam ranksep 60
+skinparam componentStyle rectangle
+
+title Twelve Labs: Streamlined Architecture
+
+package "1. Ingest" {
+    [Video Archives]
+    [Live Streams]
+    [Audio/Speech]
+}
+
+package "2. Twelve Labs Core (The Brain)" #F5F5F5 {
+    component "Multimodal Engine" as Engine {
+      [MARENGO\n(Search & Embeddings)] as Marengo #D6EAF8
+      [PEGASUS\n(Generative & Text)] as Pegasus #D5F5E3
+    }
+}
+
+package "3. Consumers & Outputs" {
+    package "Media & Entertainment" {
+        [MAM Systems]
+        [Video Editors]
+    }
+    
+    package "Data & Tech" {
+        [SQL Databases]
+        [Data Lakes]
+    }
+
+    package "Security & Gov" {
+        [Surveillance]
+        [Intel Analysts]
+    }
+}
+
+' --- Relationships ---
+
+' Inputs to Core
+[Video Archives] --> Engine
+[Live Streams] --> Engine
+[Audio/Speech] --> Engine
+
+' Core to Outputs
+Marengo --> [MAM Systems]
+Marengo --> [Video Editors]
+Marengo --> [Surveillance]
+
+Pegasus --> [SQL Databases]
+Pegasus --> [Data Lakes]
+Pegasus --> [Intel Analysts]
+
+@enduml
+
+--
+@startuml
+!theme plain
+skinparam componentStyle rectangle
+
+title Twelve Labs: High-Level Architecture & Ecosystem
+
+' --- DATA SOURCES ---
+package "Input: Unstructured Data" {
+    [Video Archives] as Video
+    [Live Streams] as Live
+    [Audio/Speech] as Audio
+}
+
+' --- TWELVE LABS CORE ---
+package "Twelve Labs Platform (The Brain)" #E6F2FF {
+    
+    component "Multimodal Ingestion" as Ingest
+    note right of Ingest: Processes Visual + Audio + Time\nsimultaneously (unlike legacy models)
+
+    frame "Foundation Models" {
+        component "MARENGO\n(The Search Engine)" as Marengo #LightBlue
+        note bottom of Marengo: Vector Embeddings\nZero-Shot Search\nClassification
+        
+        component "PEGASUS\n(The Content Creator)" as Pegasus #LightGreen
+        note bottom of Pegasus: Generative Video-to-Text\nSummarization\nQA & Chat
+    }
+}
+
+' --- CONSUMERS & OUTPUTS ---
+package "Integrations & Use Cases" {
+    
+    node "Media & Entertainment" {
+        [MAM Systems] as MAM
+        [Editors (NFL, News)] as Editors
+    }
+
+    node "Data Platforms" {
+        [SQL Databases] as DB
+        [Data Lakes (Snowflake/Databricks)] as Snowflake
+    }
+
+    node "Security & Gov" {
+        [Surveillance Dashboards] as CCTV
+        [Defense Analysts] as Intel
+    }
+}
+
+' --- RELATIONSHIPS ---
+
+' Ingest flow
+Video --> Ingest
+Live --> Ingest
+Audio --> Ingest
+
+Ingest --> Marengo
+Ingest --> Pegasus
+
+' Marengo Flows (Search)
+Marengo -down-> MAM : "Time-stamped Clips"
+Marengo -down-> CCTV : "Anomaly Detection\n('Red Truck')"
+Marengo -down-> Editors : "Semantic Search\n('Find touchdown')"
+
+' Pegasus Flows (Generative/Schema)
+Pegasus -down-> DB : "Structured JSON Schema\n(Metadata Injection)"
+Pegasus -down-> Snowflake : "SQL-queryable Text"
+Pegasus -down-> Intel : "Summaries & Intel Reports"
+
+' Legacy Comparison Note
+note left of Ingest
+  <b>Differentiation vs Legacy (IBM Watson)</b>
+  Legacy = Stitched Tags (Image + Audio separated)
+  Twelve Labs = Joint Embeddings (Holistic understanding)
+end note
+
+@enduml
