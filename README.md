@@ -7,6 +7,9 @@ Twelve Labs is an AI infrastructure startup building **multimodal foundation mod
 * **Searchable Video:** Making video data searchable via natural language (e.g., "find the moment the car turns left in the rain") without manual tagging.
 * **Programmable Video:** Allowing developers to write software that can query, summarize, and extract data from video files automatically.
 
+<img width="1007" height="555" alt="image" src="https://github.com/user-attachments/assets/2917b4b3-7547-4f05-80ef-e2d471a7ab2b" />
+
+
 ---
 
 ## 2. Core Technology & Models
