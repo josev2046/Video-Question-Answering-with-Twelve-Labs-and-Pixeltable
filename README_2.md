@@ -24,6 +24,9 @@ For example, given a clip from "The Pursuit of Happyness", the system can unders
 ## How It Works
 
 ### High-Level Architecture
+
+<img width="628" height="618" alt="image" src="https://github.com/user-attachments/assets/2b21526b-f41c-47cc-9706-848396637deb" />
+
 ```plantuml
 @startuml
 !theme plain
