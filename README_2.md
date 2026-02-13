@@ -293,6 +293,8 @@ TWELVE LABS ANSWER: The man, Chris Gardner, is searching for...
 ========================================
 ```
 
+<img width="1908" height="909" alt="image" src="https://github.com/user-attachments/assets/ca234071-7a04-428d-8663-18cc6f3e9b5f" />
+
 ## Project Structure
 ```
 my_video_app/
