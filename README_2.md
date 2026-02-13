@@ -62,6 +62,9 @@ The application operates in three distinct phases:
 #### Phase 1: Video Indexing
 
 When a video is added to the system:
+
+<img width="599" height="544" alt="image" src="https://github.com/user-attachments/assets/035c73a9-62b1-485a-934d-31c7b54abb28" />
+
 ```plantuml
 @startuml
 !theme plain
@@ -103,6 +106,9 @@ The Marengo 3.0 model analyses:
 #### Phase 2: Semantic Search
 
 When searching for relevant content:
+
+<img width="739" height="420" alt="image" src="https://github.com/user-attachments/assets/4a2a0162-c0d2-4c2a-8e02-12dffa855d47" />
+
 ```plantuml
 @startuml
 !theme plain
@@ -132,6 +138,10 @@ The search operates across multiple modalities:
 #### Phase 3: Answer Generation
 
 When generating an answer:
+
+<img width="742" height="465" alt="image" src="https://github.com/user-attachments/assets/74e59cb1-e17c-48b2-a5d5-5d020d2b1b56" />
+
+
 ```plantuml
 @startuml
 !theme plain
