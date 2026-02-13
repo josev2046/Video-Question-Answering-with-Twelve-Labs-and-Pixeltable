@@ -8,7 +8,7 @@ import pixeltable as pxt
 # -----------------------------------------------------------------------------
 # CONFIGURATION
 # -----------------------------------------------------------------------------
-API_KEY = "tlk_30NFW691GX4KGF2MGYJGC05M4CA7"
+API_KEY = "{API_KEY}"
 BASE_URL = "https://api.twelvelabs.io/v1.3"
 INDEX_NAME = "pixeltable_index"
 
