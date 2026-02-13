@@ -1,5 +1,7 @@
 # Video Question Answering with Twelve Labs and Pixeltable
 
+[![DOI](https://zenodo.org/badge/1155106489.svg)](https://doi.org/10.5281/zenodo.18636718)
+
 In the light of my own personal academic research surrounding RAG and multimodal AI in media archives, here is a demonstration application that enables natural language question answering over video content by combining Twelve Labs' AI with Pixeltable's vector database capabilities.
 
 ## Overview
