@@ -1,4 +1,4 @@
-# Video ad compliance: my TwelveLabs "acid test"
+# On video ad compliance: my TwelveLabs "acid test"
 
 > ### **Use case scope**
 > **Client:** Global Social Media Platform / Global Makeup Brand Campaign.  
@@ -47,7 +47,15 @@ The implementation in `FINAL_main.py` provides the transparency required for hig
 
 ---
 
-### Addendum: audit trial results
+### Addendum: 
+
+### My terminal PoV
+
+'ere:
+
+https://github.com/user-attachments/assets/ada4dee4-6f5a-4538-a7f2-4234188589c0
+
+### Audit trial results
 The following table outlines the empirical results from the inaugural execution of the `FINAL_main.py` governance pipeline. 
 
 | Creator | Video Link | Twelve Labs Engine | Decision | Audit Finding / Evidence |
@@ -58,7 +66,9 @@ The following table outlines the empirical results from the inaugural execution 
 | **@RicardoGorski** | [Watch](https://www.youtube.com/watch?v=mdL-GkCmvb4) | Pegasus 1.1 (ASR/OCR) | ❌ **BLOCK** | **Medical Claims:** Prohibited pharmaceutical language ("Cure") detected in audio and text overlays. |
 | **@DoctorEyeHealth** | [Watch](https://www.youtube.com/watch?v=Oz01bOgkQ7Y) | Marengo + Pegasus | ❌ **BLOCK** | **Unsafe Usage:** High-risk chemical application to eyelid; extreme safety warning issued. |
 
-### Technical summary
+
+### Test technical summary
+
 The audit was completed in **2.54 seconds** for the entire batch. This performance demonstrates the capability of the **Twelve Labs** architecture to handle high-volume ingestions that would typically take a human archivist hours to review manually. 
 
 As a Principal Architect, I find this level of granular, multimodal extraction—mapping visual risks from Marengo alongside semantic violations from Pegasus—to be the new benchmark for content integrity in the ad-tech space.
