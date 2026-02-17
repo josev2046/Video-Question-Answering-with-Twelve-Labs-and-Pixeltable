@@ -1,4 +1,4 @@
-# On video ad compliance: my TwelveLabs "acid test"
+# Video ad compliance: my TwelveLabs "acid test"
 
 > ### **Use case scope**
 > **Client:** Global Social Media Platform / Global Makeup Brand Campaign.  
@@ -23,6 +23,7 @@ This project demonstrates an automated governance pipeline where **Twelve Labs**
 <img width="1290" height="618" alt="image" src="https://github.com/user-attachments/assets/da0cf9a7-02b8-4502-8d6a-4ac3af00e229" />
 
 
+
 ---
 
 ### Technical takeaways: how AI powers this acid test
@@ -40,6 +41,7 @@ As implemented in `FINAL_my_functions.py`, the system evaluates assets through t
 <img width="1266" height="485" alt="image" src="https://github.com/user-attachments/assets/4a79a6fb-5a0a-4dd7-967e-17790d290812" />
 
 
+
 ---
 
 ### Audit outcomes & explainability
@@ -50,9 +52,7 @@ The implementation in `FINAL_main.py` provides the transparency required for hig
 ### Addendum: 
 
 ### My terminal PoV
-
 'ere:
-
 https://github.com/user-attachments/assets/ada4dee4-6f5a-4538-a7f2-4234188589c0
 
 ### Audit trial results
@@ -66,12 +66,16 @@ The following table outlines the empirical results from the inaugural execution 
 | **@RicardoGorski** | [Watch](https://www.youtube.com/watch?v=mdL-GkCmvb4) | Pegasus 1.1 (ASR/OCR) | ❌ **BLOCK** | **Medical Claims:** Prohibited pharmaceutical language ("Cure") detected in audio and text overlays. |
 | **@DoctorEyeHealth** | [Watch](https://www.youtube.com/watch?v=Oz01bOgkQ7Y) | Marengo + Pegasus | ❌ **BLOCK** | **Unsafe Usage:** High-risk chemical application to eyelid; extreme safety warning issued. |
 
-
 ### Test technical summary
-
 The audit was completed in **2.54 seconds** for the entire batch. This performance demonstrates the capability of the **Twelve Labs** architecture to handle high-volume ingestions that would typically take a human archivist hours to review manually. 
 
 As a Principal Architect, I find this level of granular, multimodal extraction—mapping visual risks from Marengo alongside semantic violations from Pegasus—to be the new benchmark for content integrity in the ad-tech space.
+
+### Implementation Note: Architectural Determinism
+For the purposes of this technical demonstration, `FINAL_my_functions.py` utilises a **deterministic simulation** of the Twelve Labs multimodal output. 
+
+* **The Rationale:** In a live "Acid Test" for a global platform, speed and reliability are paramount. By architecting the UDF (User Defined Function) to return the exact JSON schema provided by Twelve Labs' **Marengo 3.0** and **Pegasus 1.1** engines, I have demonstrated the **governance logic** and **data orchestration** without the fragility of transient network latency or API rate-limiting during the presentation.
+* **The Transition to Production:** The system is designed for a "drop-in" transition. Replacing the simulation logic with the Twelve Labs SDK would involve initialising the `TwelveLabs` client and submitting the `video_url` to the `/index` endpoint. Pixeltable's asynchronous engine then polls for task completion before populating the `audit_log` with live multimodal extractions.
 
 ### Why this matters: a humble documentarian perspective
 By centring the workflow on **Twelve Labs**, we remove the guesswork from ad moderation. As an archivist and architect, I believe the future of media lies in this transition from "tag-based" filtering to true **AI-driven video governance**. 
