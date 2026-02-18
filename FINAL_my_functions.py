@@ -3,7 +3,7 @@ from twelvelabs import TwelveLabs
 import requests
 import time
 
-API_KEY = "tlk_30NFW691GX4KGF2MGYJGC05M4CA7"
+API_KEY = "{}"
 INDEX_NAME = "pixeltable_index"
 API_URL = "https://api.twelvelabs.io/v1.2"
 client = TwelveLabs(api_key=API_KEY)
