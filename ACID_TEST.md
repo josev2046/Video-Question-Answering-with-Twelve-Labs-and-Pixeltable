@@ -67,12 +67,14 @@ The implementation in `FINAL_main.py` provides the transparency required for hig
 ### Addendum:
 
 ### My terminal PoV
+
+The outcome:
+
+<img width="797" height="650" alt="image" src="https://github.com/user-attachments/assets/732aeb70-f996-4082-9fea-6f6694584510" />
+
 Watch the pipeline execute the full Cloud-to-Cloud ingest and audit:
 
-
-
 https://github.com/user-attachments/assets/78882058-3323-4fbf-afb9-8c6c56f6f0e9
-
 
 
 ### Implementation notes:
