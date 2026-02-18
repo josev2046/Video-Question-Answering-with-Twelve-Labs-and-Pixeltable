@@ -24,7 +24,7 @@ This project demonstrates an automated governance pipeline where **Twelve Labs**
 
 ---
 
-### Technical takeaways: wow AI powers this acid test
+### Technical takeaways: how AI powers this acid test
 As implemented in `FINAL_my_functions.py`, the system evaluates assets through the latest Twelve Labs intelligence layers:
 
 1. **Visual action recognition (Marengo 3.0)**
