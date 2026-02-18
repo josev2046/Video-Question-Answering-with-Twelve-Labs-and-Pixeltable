@@ -75,13 +75,13 @@ The audit was completed in **2.54 seconds** for the entire batch. This performan
 
 As a Principal Architect, I find this level of granular, multimodal extraction—mapping visual risks from Marengo alongside semantic violations from Pegasus—to be the new benchmark for content integrity in the ad-tech space.
 
-### Implementation Note: Architectural Determinism
+### Implementation notes:
 For the purposes of this technical demonstration, `FINAL_my_functions.py` utilises a **deterministic simulation** of the Twelve Labs multimodal output. 
 
 * **The Rationale:** In a live "Acid Test" for a global platform, speed and reliability are paramount. By architecting the UDF (User Defined Function) to return the exact JSON schema provided by Twelve Labs' **Marengo 3.0** and **Pegasus 1.1** engines, I have demonstrated the **governance logic** and **data orchestration** without the fragility of transient network latency or API rate-limiting during the presentation.
-* **The Transition to Production:** The system is designed for a "drop-in" transition. Replacing the simulation logic with the Twelve Labs SDK would involve initialising the `TwelveLabs` client and submitting the `video_url` to the `/index` endpoint. Pixeltable's asynchronous engine then polls for task completion before populating the `audit_log` with live multimodal extractions.
+* **The transition to production:** The system is designed for a "drop-in" transition. Replacing the simulation logic with the Twelve Labs SDK would involve initialising the `TwelveLabs` client and submitting the `video_url` to the `/index` endpoint. Pixeltable's asynchronous engine then polls for task completion before populating the `audit_log` with live multimodal extractions.
 
-### Why this matters: a humble documentarian perspective
-By centring the workflow on **Twelve Labs**, we remove the guesswork from ad moderation. As an archivist and architect, I believe the future of media lies in this transition from "tag-based" filtering to true **AI-driven video governance**. 
+### Why this matters: 
+By centring the workflow on **Twelve Labs**, we remove the guesswork from ad moderation. I believe the future of media lies in this transition from "tag-based" filtering to true **AI-driven video governance**. This prototype successfully provides automated, specific feedback to creators (e.g., *"Blocked: Twelve Labs detected prohibited medical claims at 01:20"*) and provides advertisers with a level of auditability that was previously impossible at scale.
 
-The platform provides automated, specific feedback to creators (e.g., *"Blocked: Twelve Labs detected prohibited medical claims at 01:20"*) and provides advertisers with a level of auditability that was previously impossible at scale.
+
