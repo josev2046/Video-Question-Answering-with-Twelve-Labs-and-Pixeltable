@@ -33,6 +33,9 @@ Pixeltable is a Declarative AI Database. It is designed to treat AI models as if
 ## 4. The Collaborative Workflow
 The relationship follows a Trigger-Action pattern:
 
+<img width="1357" height="732" alt="image" src="https://github.com/user-attachments/assets/a6bd1f54-29ed-4e9c-a150-c9d4f03b3f61" />
+
+
 1. The Event: A Video URL is inserted into a Pixeltable Input Column.
 2. The Trigger: Pixeltable detects the new entry and realizes a Computed Column depends on it.
 3. The Request: Pixeltable orchestrates the call to Twelve Labs, handling the upload and the waiting period while the video indexes.
