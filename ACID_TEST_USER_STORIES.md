@@ -7,7 +7,7 @@
 | Criterion | Description |
 | :--- | :--- |
 | **Ingestion** | User can successfully upload a sample video asset via the browser. |
-| **Querying** | User can input text-based questions (e.g., "What is the man searching for?") into the UI. |
+| **Querying** | User can input text-based questions into the UI. |
 | **Validation** | User receives an accurate, timestamped response directly in the interface. |
 | **Zero-Code** | The entire process requires no API keys, local environment setup, or code execution. |
 
@@ -22,47 +22,44 @@
 | Criterion | Description |
 | :--- | :--- |
 | **Data Structure** | A Pixeltable directory and table are successfully created to store video URLs and metadata. |
-| **Automated Indexing** | Inserting a video URL automatically triggers the `index_and_embed` function to compute embeddings. |
+| **Automated Indexing** | Inserting a video URL automatically triggers the indexing function to compute embeddings. |
 | **Search & Generate** | The system can take a programmatic text prompt, run a native search, and generate a contextual answer. |
-| **Console Output** | The console clearly logs the progress (Setup, Ingest, Compute, Search) and prints the final AI-generated answer. |
+| **Console Output** | The console clearly logs progress and prints the final AI-generated answer. |
 
 ---
 
 ### RUN
 
-**User Story:** As a “TRUST EXEC” I want to process a batch of creator video submissions through an automated multimodal intelligence pipeline so that I can instantly generate compliance summaries and approve, block, or flag content without manual review.
+**User Story:** As a Global Brand Safety Manager for a Tier-1 Cosmetics Corporation, I want to automatically audit influencer video content against a set of "Zero-Tolerance" safety and relevance triggers, so that I can instantly block off-topic content, flag dangerous physical techniques for review, and reject misleading medical claims without manually watching thousands of hours of footage.
 
 **Acceptance Criteria:**
 
 | Criterion | Description |
 | :--- | :--- |
-| **Batch Processing** | The pipeline can ingest an array of multiple video URLs and their associated creator handles. |
-| **Pipeline Triggers** | Pixeltable computed columns automatically trigger compliance analysis, summarization, and decision-making logic for every inserted row. |
-| **Decision Engine** | The system accurately assigns a status (APPROVE, BLOCK, or FLAG) based on the findings from the Twelve Labs compliance report. |
-| **Audit Logging** | The console outputs a clean, formatted audit table detailing the creator, the final decision with visual icons (✅, ❌, ⚠️), the AI engine used, a summary, and specific policy findings. |
+| **Multimodal Context** | The system analyzes visual actions (sharp tools), audio/speech (medical claims), and thematic relevance (culinary) simultaneously. |
+| **Binary Logic Triggers** | The AI follows strict "If/Then" triggers (e.g., If Food -> BLOCK) to override model helpfulness bias. |
+| **Temporal Evidence** | Every decision is anchored to a specific timestamp (e.g., 00:15s) providing explainability for every BLOCK or REVIEW status. |
+| **Automated Reporting** | Pixeltable computed columns "shred" raw AI JSON into a structured dashboard showing Creator, Decision, Findings, and Summary. |
 
 ---
 
-### APIs under the hood:
+### APIs Under the Hood
 
-I am making calls to several core Twelve Labs APIs to power these multimodal features. Here is the breakdown of the obvious APIs being invoked during my "Walk" and "Run" phases.
+The system leverages several core Twelve Labs APIs to power these multimodal features across the "Walk" and "Run" phases.
 
-### (`main.py`)
+### Phase: WALK (main.py)
 
-In my foundational Q&A script, I am leveraging Twelve Labs' search and generation capabilities. The underlying API calls for this include:
+In the foundational Q&A script, the focus is on search and generation:
 
-* **Index API (`POST /indexes`)**: When I set up `PROJECT_NAME`, this creates the structural container (index) on the Twelve Labs platform to hold my video embeddings.
-* **Task/Upload API (`POST /tasks` or the newer `POST /assets` + `POST /indexes/{id}/indexed-assets`)**: Triggered by `index_and_embed(videos.url)`. This is where the actual video URL is passed to Twelve Labs to extract and compute the multimodal embeddings (visual, audio, speech, text).
-* **Embed API (`POST /embed`)**: Triggered by the `text_embed` function. This takes my text query and turns it into vector embeddings in the exact same latent space as the video (typically using their Marengo model) so that a similarity search can happen.
-* **Search API (`POST /search`)**: Used to locate the specific, relevant moments within the video based on my prompt.
-* **Generate API (`POST /generate`)**: Triggered by `generate_answer()`. This likely utilizes Twelve Labs' Pegasus model to perform an open-ended analysis, turning the retrieved video context into the final natural language answer to "What is the man searching for?".
+* **Index API (POST /indexes):** Creates the structural container on Twelve Labs to hold video embeddings.
+* **Task/Upload API (POST /tasks):** Ingests the video URL to extract multimodal embeddings (visual, audio, speech).
+* **Search API (POST /search):** Locates specific, relevant moments within the indexed video based on a text prompt.
+* **Generate API (POST /generate):** Uses the Pegasus model to turn retrieved video context into a natural language answer.
 
----
+### Phase: RUN (app.py & AI_my_functions.py)
 
-### (`FINAL_main.py`)
+In the automated compliance pipeline, the focus shifts to deep reasoning and adversarial instructions:
 
-In my automated compliance pipeline, the focus shifts heavily toward batch processing and complex video understanding/reasoning.
-
-* **Task/Upload API (`POST /tasks` / `POST /assets`)**: Used iteratively or asynchronously to ingest my batch of 5 test submissions (`MECCA_Beauty.mp4`, etc.) into the compliance index.
-* **Generate API (`POST /generate`)**: This is the star of the `analyze_compliance_live()` function. It uses the Pegasus model for high-level video reasoning. Instead of just searching, I am likely passing a strict system prompt (e.g., "Analyze this video for brand safety, NSFW content, and specific policy violations") and receiving structured text back.
-* **(Optional/Likely) Summarize or Generate API**: If `get_summary()` and `get_decision()` aren't just parsing the initial report locally via Python, they might be making secondary calls to the Generate API to condense the complex policy findings into the short 📝 summary and the `APPROVE`/`BLOCK` statuses.
+* **Task/Upload API (POST /tasks):** Manages the batch ingestion of creator submissions into a specialized compliance index.
+* **Analyze API (POST /analyze):** This is the core of the Pegasus 1.2 integration. It sends a "Zero-Tolerance" system prompt to the model. Unlike standard search, this performs deep reasoning to evaluate the video against specific brand safety rules.
+* **Structured Output:** The Generate/Analyze response is returned as a JSON object, which is then parsed by Pixeltable UDFs to populate the final audit table.
