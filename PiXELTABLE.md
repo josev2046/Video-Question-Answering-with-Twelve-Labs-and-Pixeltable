@@ -1,4 +1,4 @@
-# Pixeltable: Infrastructure & multimodal AI cheatsheet
+# Pixeltable: Infrastructure & multimodal AI 
 
 Pixeltable is a declarative data infrastructure specifically engineered for multimodal AI applications. It unifies data storage, orchestration, and model inference into a single table-based interface, eliminating the need for fragmented pipelines involving separate vector databases and manual glue code.
 
